@@ -1,6 +1,18 @@
 desc 'Build HTML'
 task :html do
 	require 'haml'
+	class String
+		def & prefix
+			{id: self, class: [:part, :tri_branch], tri_prefix: prefix}
+		end
+		def +@
+			{class: :tri_leaf, tri: :text_content, tri_path: self}
+		end
+		def ~@
+			{class: :tri_leaf, tri: :text_format, tri_format: self}
+		end
+	end
+
 	haml = open('src/index.haml') { |fd| fd.read }
 	html = Haml::Engine.new(haml).render
 	open('index.html', 'w') { |fd| fd.puts html }

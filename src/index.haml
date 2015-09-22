@@ -2,18 +2,34 @@
 %html
 	%head
 		%title Fallout Shelter Overseer Toolbox
-		%link{res: :stylesheet, type: 'text/css', href: 'style.css'}/
+		%link{res: :stylesheet, type: 'text/css', href: 'style.css'}
 		%script{type: 'text/javascript', src: 'lib/routie.min.js'}
 		%script{type: 'text/javascript', src: 'logic.js'}
 	%body
 		%nav
 			%h1 FOS Toolbox
 			%ul
-		.part#vault
-			%h2 Vault
-			vault vault
-		.part#stats
-			%h2 Stats
+		%div{'vault' & 'vault'}
+			%h2
+				Vault
+				%span{+ '.VaultName'}
+			%dl
+				%dt Energy
+				%dd{+ '.storage.resources.Energy'}
+				%dt Food
+				%dd{+ '.storage.resources.Food'}
+				%dt Water
+				%dd{+ '.storage.resources.Water'}
+				%dt Caps
+				%dd{+ '.storage.resources.Nuka'}
+				%dt Stimpacks
+				%dd{+ '.storage.resources.StimPack'}
+				%dt Radaways
+				%dd{~ '{current}/{max}', current: '.storage.resources.RadAway', max: 'calc.vault.max.stimpacks'}
+				%dt Lunchboxes
+				%dd{+ '.LunchBoxesCount'}
+		.part#dwellers
+			%h2 Dwellers
 			table table
 		.part#wasteland
 			%h2 Wasteland
