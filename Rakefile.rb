@@ -3,13 +3,13 @@ task :html do
 	require 'haml'
 	class String
 		def & prefix
-			{id: self, class: [:part, :tri_branch], tri_prefix: prefix}
+			{id: self, class: [:part, :△_branch], △_prefix: prefix}
 		end
 		def +@
-			{class: :tri_leaf, tri: :text_content, tri_path: self}
+			{class: :△_leaf, △: :text_content, △_path: self}
 		end
 		def ~@
-			{class: :tri_leaf, tri: :text_format, tri_format: self}
+			{class: :△_leaf, △: :text_format, △_format: self}
 		end
 	end
 
@@ -21,9 +21,10 @@ end
 desc 'Build CoffeeScript'
 task :js do
 	require 'coffee-script'
-	cs = open('src/logic.coffee') { |fd| fd.read }
-	js = CoffeeScript.compile(cs)
-	open('logic.js', 'w') { |fd| fd.puts js }
+	css = {}
+	Dir.glob('src/*.coffee') { |fn| open(fn) { |fd| css[fn] = fd.read } }
+	jss = css.sort.map { |fn, cs| CoffeeScript.compile(cs, filename: fn) }
+	open('logic.js', 'w') { |fd| fd.puts jss.join("\n") }
 end
 
 desc 'Build Everything'

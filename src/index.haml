@@ -23,9 +23,9 @@
 				%dt Caps
 				%dd{+ '.storage.resources.Nuka'}
 				%dt Stimpacks
-				%dd{+ '.storage.resources.StimPack'}
+				%dd{~ '{current}/{max}', current: '.storage.resources.StimPack', max: 'calc.vault.max.stimpacks'}
 				%dt Radaways
-				%dd{~ '{current}/{max}', current: '.storage.resources.RadAway', max: 'calc.vault.max.stimpacks'}
+				%dd{~ '{current}/{max}', current: '.storage.resources.RadAway', max: 'calc.vault.max.radaways'}
 				%dt Lunchboxes
 				%dd{+ '.LunchBoxesCount'}
 		.part#dwellers
