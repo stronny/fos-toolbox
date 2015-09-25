@@ -4,6 +4,7 @@
 		%title Fallout Shelter Overseer Toolbox
 		%link{res: :stylesheet, type: 'text/css', href: 'style.css'}
 		%script{type: 'text/javascript', src: 'lib/routie.min.js'}
+		%script{type: 'text/javascript', src: 'lib/sigma.min.js'}
 		%script{type: 'text/javascript', src: 'logic.js'}
 	%body
 		%nav
@@ -34,3 +35,6 @@
 		.part#wasteland
 			%h2 Wasteland
 			wasteland wasteland
+		.part#relatives
+			%h2 Relationship graph
+			#sigma(style="min-height: 1000px")
